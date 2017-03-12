@@ -1,0 +1,14 @@
+also : также
+apple : яблоко
+chair : стул
+father : папа
+grape : виноград
+hello : привет
+hello my friend : здравствуй мой друг
+hi : привет
+mother : мама
+orange : апельсин
+plus : плюс
+side : сторона
+table  : стол
+terrible : ужасно

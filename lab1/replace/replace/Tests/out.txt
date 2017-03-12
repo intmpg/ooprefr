@@ -1,0 +1,15 @@
+Test1 
+...OK 
+Test2 
+...OK 
+Test3 
+ERROR: Too many arguments. [input] [output] [searchstring] [replacestring]
+...OK 
+Test4 
+...OK 
+Test5 
+ERROR: Not enough arguments for the program. Usage replace. exe [input] [output] [searchstring] [replacestring]
+...OK 
+Test6 
+ERROR: Too many arguments. [input] [output] [searchstring] [replacestring]
+...OK 
