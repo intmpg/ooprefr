@@ -6,11 +6,17 @@ template <typename T>
 class CMyArray
 {
 public:
+
+	typedef CMyIterator<T, false> iterator;
+	typedef CMyIterator<T, true> reverse_iterator;
+	typedef CMyIterator<const T, false> const_iterator;
+	typedef CMyIterator<const T, true> const_reverse_iterator;
+
 	CMyArray() = default;
 
 	CMyArray(const CMyArray& arr)
 	{
-		CopyConstructor(arr);
+		CopyProcess(arr);
 	}
 
 	CMyArray(CMyArray && arr) //конструктор перемещения
@@ -56,12 +62,13 @@ public:
 		}
 	}
 
-	void CopyConstructor(const CMyArray & arr)
+	void CopyProcess(const CMyArray & arr)
 	{
 		const auto size = arr.GetSize();
+		DeleteItems(m_begin, m_end);
+
 		if (size != 0)
 		{
-			DeleteItems(m_begin, m_end);
 			m_begin = RawAlloc(size);
 			try
 			{
@@ -76,7 +83,6 @@ public:
 		}
 		else
 		{
-			DeleteItems(m_begin, m_end);
 			m_begin = m_end = m_endOfCapacity = nullptr;
 		}
 	}
@@ -229,7 +235,7 @@ public:
 		return *this;
 	}
 
-	bool empty() const
+	bool Empty() const
 	{
 		return m_begin == m_end ? true : false;
 	}
@@ -238,7 +244,7 @@ public:
 	{
 		if (std::addressof(*this) != std::addressof(arr))
 		{
-			CopyConstructor(arr);
+			CopyProcess(arr);
 		}
 		return *this;
 	}
@@ -247,11 +253,6 @@ public:
 	{
 		DeleteItems(m_begin, m_end);
 	}
-
-	typedef CMyIterator<T, false> iterator;
-	typedef CMyIterator<T, true> reverse_iterator;
-	typedef CMyIterator<const T, false> const_iterator;
-	typedef CMyIterator<const T, true> const_reverse_iterator;
 
 	iterator begin() { return iterator(m_begin); }
 

@@ -20,7 +20,7 @@ BOOST_FIXTURE_TEST_SUITE(MyArray, EmptyArray)
 		}
 		BOOST_AUTO_TEST_CASE(has_equal_begin_and_end)
 		{
-			BOOST_CHECK(arr.empty());
+			BOOST_CHECK(arr.Empty());
 		}
 		BOOST_AUTO_TEST_SUITE_END()
 	BOOST_AUTO_TEST_SUITE(after_appending_an_item)

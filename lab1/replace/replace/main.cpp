@@ -1,6 +1,6 @@
 #include "replace.h"
 
-void OpenFiles(char const *inputFileName, char const *outputFileName, std::ifstream &inputFile, std::ofstream &outputFile)
+void OpenFiles(char *inputFileName, char *outputFileName, std::ifstream &inputFile, std::ofstream &outputFile)
 {
 	inputFile.open(inputFileName, std::ifstream::in);
 	outputFile.open(outputFileName, std::ofstream::out);
@@ -44,31 +44,29 @@ bool IsSearchStringNotEmpty(std::string const &searchString)
 void StringReplacing(std::string const &searchString, std::string const &replaceString, std::ifstream &inputFile, std::ofstream &outputFile)
 {
 	std::string currentString;
-	std::string bufferString;
 	std::string::size_type pos;
 	
 	while (!inputFile.eof())
 	{
 		std::getline(inputFile, currentString);
-		bufferString = "";
 		for (pos = 0; pos != currentString.size();)
 		{
-			if (currentString.substr(pos, searchString.size()) == searchString) // compare 
+			if ((currentString.substr(pos, searchString.size())).compare(searchString) == 0)
 			{
 				pos += searchString.size();
-				bufferString += replaceString;
+				outputFile << replaceString;
 			}
 			else
 			{
-				bufferString += currentString[pos];
+				outputFile << currentString[pos];
 				pos++;
 			}
 		}
-		outputFile << bufferString << std::endl;
+		outputFile << std::endl;
 	}
 }
 
-bool CopyFileWithStringReplacing(char *nameInputFile, char *nameOutputFile, std::string const &searchString, std::string replaceString)
+bool CopyFileWithStringReplacing(char *nameInputFile, char *nameOutputFile, std::string &searchString, std::string replaceString)
 {
 	std::ifstream inputFile;
 	std::ofstream outputFile;
