@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
 	IntegerSet ans = GeneratePrimeNumbers(upperBound);
 	for (int x : ans)
 	{
-		printf("%d ", x);
+		//printf("%d ", x);
 	}
 
 	return 0;

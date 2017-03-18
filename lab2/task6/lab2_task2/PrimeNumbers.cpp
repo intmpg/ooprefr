@@ -7,6 +7,7 @@ IntegerSet GeneratePrimeNumbers(int upperBound)
 
 	int *lowestPrime = new int[upperBound + 1];
 	memset(lowestPrime, 0, sizeof(int) * (upperBound + 1));
+
 	for (int i = 2; i <= upperBound; i++)
 	{
 		if (lowestPrime[i] == 0)
@@ -16,7 +17,7 @@ IntegerSet GeneratePrimeNumbers(int upperBound)
 		}
 		for (int x : res)
 		{
-			if (x > lowestPrime[i] || (1LL * i * x > upperBound))
+			if (x > lowestPrime[i] || (i * x > upperBound))
 			{
 				break;
 			}

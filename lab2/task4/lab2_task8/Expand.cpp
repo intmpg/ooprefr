@@ -66,7 +66,7 @@ string ExpandTemplate(const string &tpl, const WordAccordances &params)
 		strHashes[i] = curHash;
 	}
 	
-	string s = "";
+	string s;
 	for (size_t i = 0; i < tpl.length(); ++i)
 	{
 		curParam = 0;
@@ -82,14 +82,14 @@ string ExpandTemplate(const string &tpl, const WordAccordances &params)
 			size_t paramIndex = it->first.length() + i - 1;
 			if (tpl.length() > paramIndex)
 			{
-				long long curHash = strHashes[paramIndex];
-				if (i)
+				auto curHash = strHashes[paramIndex];
+				if (i > 0)
 				{
 					curHash -= strHashes[i - 1];
 				}
 
-				size_t paramPower = it->first.length() - 1;
-				long long paramHash = hashes[curParam] * hashPowers[i];
+				auto paramPower = it->first.length() - 1;
+				auto paramHash = hashes[curParam] * hashPowers[i];
 
 				if (curHash == paramHash && EqualStrings(it->first, tpl, i, paramIndex))
 				{
