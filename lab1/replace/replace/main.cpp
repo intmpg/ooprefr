@@ -70,7 +70,7 @@ void StringReplacing(std::string &searchString, std::string &replaceString, std:
 	}
 }
 
-bool CopyFileWithStringReplacing(char *nameInputFile, char *nameOutputFile, std::string &searchString, std::string replaceString)
+bool CopyFileWithStringReplacing(char *nameInputFile, char *nameOutputFile, std::string &searchString, std::string & replaceString)
 {
 	std::ifstream inputFile;
 	std::ofstream outputFile;
@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 {
 	if (IsCountArgumentsCorrect(argc))
 	{
-		return !CopyFileWithStringReplacing(argv[1], argv[2], argv[3], argv[4]);
+		return !CopyFileWithStringReplacing(argv[1], argv[2], std::string(argv[3]), std::string(argv[4]));
 	}
-	return 1;
+	return 0;
 }
